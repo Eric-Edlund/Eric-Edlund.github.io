@@ -1,0 +1,111 @@
+
+/*
+    Style file for all topics to share.
+*/
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    margin: auto; /* Allows it to center itself*/
+    padding: 3ch;
+    text-align: center;
+    background-color:orange;
+    max-width: 80ch;
+}
+
+
+h1 {
+    background-color: white;
+    border-radius: 1ch;
+    width: fit-content;
+    margin: auto;
+    padding: 1ch;
+}
+
+h2 {
+    background-color: rgba(255, 255, 255, 0.7);
+    
+    margin-right: auto;
+    border-radius: 1ch;
+    padding: 1ch;
+    margin-left: auto;
+    align-content: center;
+    margin-top: 2em;
+    width: fit-content;
+    padding-left: 5ch;
+    padding-right: 5ch;
+}
+
+h3 {
+    text-align: left;
+    border-bottom: 0.1ch black solid;
+
+}
+
+p {
+    text-align: left;
+    line-height: 2em;
+}
+
+
+code-example {
+    text-align: left;
+    margin-left: 3ch;
+    max-width: 100%;
+}
+
+/*
+code {
+    background-color: lightgreen;
+
+    border-radius: 0.5ch;
+    border-top: 1px black solid;
+    border-left: 1px black solid;
+    border-right: 1px white solid;
+    border-bottom: 1px white solid;
+
+}
+*/
+
+code {
+    background-color: rgba(255, 255, 255, 0.5);
+    padding: 0.3ch;
+}
+
+ol {
+    text-align: left;
+    line-height: 2em;
+}
+
+td {
+    border: 2px solid black;
+    margin: 0;
+}
+
+/*
+    For examples that show what some code would display in the browser
+*/
+.visualpreview {
+    background-color: white;
+}
+
+.visualpreview > * {
+    border: black 1px solid;
+}
+
+a {
+    color: blue;
+    transition: 0.25s;
+    font-size: initial;
+}
+
+a:visited {
+    color: blue;
+}
+
+a:hover {
+    transition: 0.25s;
+    font-size: 1.2em;
+}

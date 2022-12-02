@@ -1,0 +1,104 @@
+
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-flow: row;
+}
+
+nav {
+    height: 100%;
+    width: fit-content;
+    transition: 0.5s;
+    border-right: solid 1px black;
+    background-color: #8A897C;
+    color: white;
+    text-decoration: none; /*Don't let the links look like links*/
+    overflow: auto;
+}
+
+nav > a {
+    display: block; /*forces them to be stacked*/
+    text-align: left;
+    padding: 0.5ch;
+    
+    color: inherit; /* Make active linnks the same color as everything else*/
+    text-decoration: inherit;
+    background-color: inherit;
+    cursor: pointer;
+}
+
+nav > a:not(.sub_topic) {
+    padding-top: 1ch;
+    padding-bottom: 1ch;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 1ch;
+    margin: 1ch;
+}
+
+nav > a.sub_topic {
+    padding-left: 4ch;
+    font-size: 0.8em;
+    font-style: oblique;
+}
+
+
+
+nav > a:not(.active_topic_entry):hover {
+    background-color: #999889;
+}
+
+
+.active_topic_entry:not(.sub_topic) {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.active_topic_entry.sub_topic {
+    background-color: rgba(255, 255, 255, 0.3);
+    border-radius: 0.5ch;
+
+    width: fit-content;
+    padding: 0.5ch;
+    padding-left: 1ch;
+    padding-right: 1ch;
+    margin-left: 4ch;
+}
+
+nav > a:active {
+    color: orange;
+}
+
+#toggleTopicSelectorButton {
+    white-space: nowrap;
+    margin: .5ch;
+    background-color: transparent;
+    border: none;
+    font-size: large;
+    transition: 0.5s;
+    
+}
+
+.topicSelectorControls {
+    text-align: right;
+}
+
+main {
+    display: flex;
+    flex-grow: 1;
+    min-width: 0px;
+    border: none;
+    margin: 0;
+    padding: 0;
+}
+
+#topic_view {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    border: none;
+}

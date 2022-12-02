@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="topicstyle.css">
+        <script src="topiclogic.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    </head>
+    <body onload="onLoad()">
+        
+        <h1>Adding Content</h1>
+
+        <p>
+            There are many different html elements to choose from.
+            Instead of going over all of them here, I'm going 
+            to show you examples typical of most elements. 
+            A list of all html elements, or a specific element
+            from a description of what you want, is only a google away.
+
+        </p>
+
+        
+
+        <p>
+            Some elements exist only to contain others. <code text="<div></div>"></code> creates a 
+            <q>division</q> which contains other elements and can control how they're orgnized.
+            Elements like <code text="nav"></code> and <code text="main"></code> should be used to 
+            mark the nagivation and main areas of your page. These tags allows screen readers
+            analyze the structure of the page.
+
+        </p>
+        <p>
+            While some elements like <code text="div"></code> are intended specifically 
+            to organize your content, there is nothing stopping you from using other 
+            elements similarly. <code text="div"></code> div exists solely for 
+            organization, but other elements will behave similarly when given child elements.
+            For example, the paragraph element <code text="<p>"></code> will further indent child 
+            paragraph elements making sub-paragraphs.     </p>
+
+
+
+        <h2 id="TextBasedElements">Text Based Elements</h2>
+        <p>Text formatting in html is done by using elements. 
+            In html, the header above this paragraph is written
+    <code text="<h3>Text Based Elements</h3>"></code> and the text for this paragraph
+ is contained in a <code text="<p>...</p>"></code> element.
+            Newline and tab characters inside the html document are ignored. 
+        These tags tell the browser how it should space out the text.
+</p>
+
+    <table style="width: 100%;">
+        <tr>
+            <td><code text="<h1>"></code></td>
+            <td><h1>Header 1</h1></td>
+        </tr>
+        <tr>
+            <td><code text="<h2>"></code></td>
+            <td><h2>Header 2</h2></td>
+        </tr>
+        <tr>
+            <td><code text="<h3>"></code></td>
+            <td><h3>Header 3</h3></td>
+        </tr>
+        <tr>
+            <td><code text="<h4>"></code></td>
+            <td><h4>Header 4</h4></td>
+        </tr>
+        <tr>
+            <td><code text="<h5>"></code></td>
+            <td><h5>Header 5</h5></td>
+        </tr>
+        <tr>
+            <td><code text="<p>"></code></td>
+            <td><p>Paragraph</p></td>
+        </tr>
+        <tr>
+            <td><code text="<br>"></code></td>
+            <td>line<br>break</td>
+        </tr>
+        <tr>
+            <td><code text="<strong>"></code></td>
+            <td><strong>Makes text stand out</strong></td>
+        </tr>
+        <tr>
+            <td><code text="<i>"></code></td>
+            <td><i>Italicizes text</i></td>
+        </tr>
+        <tr>
+            <td><code text="<pre>"></code></td>
+            <td><pre>Respects text formatting 
+                done in html
+                   including font, 
+                new lines, and  tabs
+            </pre></td>
+        </tr>
+
+    </table>
+
+    <p>
+        There are other text elements, but these are most of what you'll use.
+    </p>
+
+    <h2 id="Attributes">Element Attributes</h2>
+
+    <p>
+        Elements often have multiple <strong>attributes</strong> associated with them.
+    </p>
+    <p><code text='<a href="www.google.com">Link to Google</a>'></code>
+        <a href="www.google.com">Link to Google</a>
+    </p>
+
+    <p>
+        Attributes are written <code>key="value"</code> like 
+            in <code>href="www.google.com"</code> or <code>src="page.html"</code>.
+        They're separated by spaces and their value
+    </p>
+
+    <h3 id="Anchors"><a href="adding_content.html#Anchors">Anchor</a></h3>
+
+    <p>Anchors (links) take the user to another page. *usually</p>
+    <p>
+        The <code t="href"></code> attribute specifies the target URL of the link. 
+        Uniform Resource Locator strings can, among other things, access other websites,
+         other html files, and specific places on your website.
+    </p>
+
+<aside>
+    <h4>URLs</h4>
+    <p>
+        <a href="facebook.com/Google/">facebook.com/Google/</a> is an <strong>absolute</strong> URL. 
+        You could copy 
+        it into your browser's search bar and you would end up on Google's Facebook page. An 
+        <strong>absoute</strong> url, like this one, leaves no question about where it's pointing 
+        to. It has the domain <q>facebook.com</q> which points to Facebook's 
+        servers, and then the path <q>/Google/</q> which says exactly what page <strong>on their servers</strong> it wants
+         (Google's Facebook page in this case).
+    </p>
+
+    <p>
+        Alternatively, there are <strong>relative</strong> URLs, which lack a domain.
+        The URL's path is interpreted differently depending on where it is. A relative 
+        url inside an html file will search the file system starting at the directory 
+        of the html file. This page's file structure looks like this:
+    </p>
+
+    <iframe src="../" frameborder="0" style="width: 100%; aspect-ratio: 2;"></iframe>
+
+    <p>
+        The topics in the topic navigation panel on this page are anchor elements.
+        The anchor for this class is in the main.html document, and has 
+        <code t="href='topics/adding_content.html'"></code>, which points to the 
+        html file for this lesson. Relative to the main.html file, this lesson is 
+        stored in the topics directory.
+    </p>
+
+    <p>
+        Also relevant is that URLs have a fragment suffix which refrences a specific 
+        element within the webpage. The heading for this section is written 
+        <code t="<a href='adding_content.html#Anchors'></a>"></code>. Clicking it will 
+        instruct the browser to take us to the adding_content.html page and scroll 
+        to the top of the <q>Anchors</q> section. The beginning of a section of a webpage 
+        is marked by setting the <code t="id"></code> attribute of any element. In this 
+        case, the Header is written:
+        <p><code t="<h3>
+            <a id='Anchors' href='adding_content.html#Anchors'>Anchors</a>
+        </h3>"></code></p>
+
+        This is an <code t="<h3>"></code> header element containing an <code t="<a>"></code>
+        anchor element with the id of <q>Anchors</q>, the URL <q>adding_content.html#Anchors</q> 
+        and the text <q>Anchors</q>. When clicked, it tells the browser to move the focus 
+        to it's self.
+    </p>
+</aside>
+
+    <p>
+        Also, observe how the text inherits formatting from both the parent 
+        <code t="<h3>"></code> and the child <code t="<a>"></code> element.
+        The result is text that is the size of a 3rd level header with the color 
+        and underline of a link. Inheritable properties like this will be important 
+        later.
+    </p>
+
+    <h4>Targets</h4>
+
+    <p>Anchors also have the <code>target</code> attribute. 
+        This specifies what the browser will do to the link.
+    </p>
+
+    <table>
+        <tr>
+            <td>_blank</td>
+            <td>Opens the link in a new tab.</td>
+        </tr>
+        <tr>
+            <td>_self</td>
+            <td>Opens the link in current view.</td>
+        </tr>
+        <tr>
+            <td>_parent</td>
+            <td> Opens the link in the parent frame.</td>
+        </tr>
+        <tr>
+            <td>_top</td>
+            <td>Replaces the current tab's content.</td>
+        </tr>
+        <tr>
+            <td>framename</td>
+            <td>Opens the linked document in the iframe with the attribute 
+                <code>name=framename</code></td>
+        </tr>
+    </table>
+
+    <h3 id="Images">Images</h3>
+
+    <h3 id="SrcVsHref">src vs href</h3>
+
+    <p>There is a rational behind making the <code>src</code> and <code>href</code> 
+    attributes have different names.</p>
+    <p>
+        <code>href</code> is a shortening of <q>Hyperlink Refrence</q>, and unlike
+         <code>src</code>, the resource refrenced doesn't need to be located before 
+         the page can load. 
+    </p>
+
+    <h3 id="Frames">Frames</h3>
+ 
+    <iframe src="adding_content.html" style="float: right; margin: 8px; height: 40ch; border: 1px solid black;"></iframe>
+
+    <p>Frames contain their own html. They allow modularity in pages.
+        This lesson is in a frame, and that frames content is changed
+        when you switch lessons. This lets me keep all the lessons 
+        in separate html files.
+    </p>
+    <p>The <code>iframe</code> element displays the url given by the <code>src</code> attribute.</p>
+    <p>There's some controversy online about if iframes should be used or not.
+        I haven't dug far into it, but it looks like <code text="<iframe>"></code> 
+        is the current way to do this, and <code text="<frame>"></code> is depreciated.
+    </p>
+
+
+
+    <p>
+        There are many different elements and each takes different attributes and 
+        has different child behavior. I've listed out some of the big ones, but 
+        the important thing is that you can find the relevant documentation.
+    </p>
+
+
+    <p>All the elements: anchors, labels, titles, paragraphs, iframes...</p>
+    <p>If I decided not to go into attributes in the "Html Douments" section, go over them here </p>
+    <p>Mention nesting if I haven't already</p>
+
+    <p>Text based ones,
+        then all the others
+    </p>
+    
+    <iframe src="javascript:void(0)" id="frameid" frameborder="0" style="background-color: white; width: 100px; height: 100px;"></iframe>
+    
+  </body>
+</html>

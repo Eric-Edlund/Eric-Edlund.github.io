@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title id="page_title">WebDev Tutorial</title>
+        <link rel="stylesheet" href="main.css">
+        <script src="main.js"></script>
+    </head>
+    <body onload="init()">
+        <nav id="topic_selector">
+            <div class="topicSelectorControls">
+                <button id="toggleTopicSelectorButton" onclick="toggleTopicSelector()">
+                    <img src="resources/expandArrow.png" alt="toggle topic selection panel"
+                    style="width: 1.5ch;">
+                </button>
+            </div>
+            <a onclick="activateTopic('topics/html_documents.html', this)">HTML Documents</a>
+            
+            <a onclick="activateTopic('topics/adding_content.html', this)">Adding Content
+                <a class="sub_topic" onclick="activateTopic('topics/adding_content.html#TextBasedElements', this)">Text Based Elements</a>
+                <a class="sub_topic" onclick="activateTopic('topics/adding_content.html#Attributes', this)">Element Attributes</a>
+
+            </a>
+
+            <a onclick="activateTopic('topics/css_styling.html', this)">Stylizing Elements
+                <a class="sub_topic" onclick="activateTopic('topics/css_styling.html#Syntax', this)">Syntax</a>
+                <a class="sub_topic" onclick="activateTopic('topics/css_styling.html#Selectors', this)">Selectors</a>
+                <a class="sub_topic" onclick="activateTopic('topics/css_styling.html#Declarations', this)">Declarations</a>
+                <a class="sub_topic" onclick="activateTopic('topics/css_styling.html#Implementation', this)">Using CSS in Your Website</a>
+                <a class="sub_topic" onclick="activateTopic('topics/css_styling.html#Cascading', this)">Cascading Style</a>
+            </a>
+            
+            <a onclick="activateTopic('topics/layout_and_sizing.html', this)">Layout and Sizing
+                <a class="sub_topic" onclick="activateTopic('topics/layout_and_sizing.html#InternalSpacing', this)">Internal Spacing</a>
+                <a class="sub_topic" onclick="activateTopic('topics/layout_and_sizing.html#Dimensions', this)">Dimensions</a>
+                <a class="sub_topic" onclick="activateTopic('topics/layout_and_sizing.html#Layouts', this)">Layouts</a>
+                <a class="sub_topic" onclick="activateTopic('topics/layout_and_sizing.html#Position', this)">Position</a>
+            </a><!--Bring up iframes again-->
+
+            <a onclick="activateTopic('topics/logic_with_js.html', this)">Logic</a>
+            <!--How far into js do I want to go? It would be good for me to
+                really understand and be abe to explain it...-->
+            <a onclick="activateTopic('topics/design_discussion.html', this)">Thoughts on Competent Design</a>
+            <!--High lvl discussion of UI design?
+                    Maybe after Logic, or maybe dispersed everywhere, or maybe I'm doing too mnuch already-->
+
+            
+        </nav>
+        <main>
+            <iframe name="topic_view" id="topic_view"></iframe>
+        </main>
+        
+    </body>
+</html>

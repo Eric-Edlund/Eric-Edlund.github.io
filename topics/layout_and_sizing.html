@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="topicstyle.css">
+        <script src="topiclogic.js"></script>
+    </head>
+    <body onload="onLoad()">
+        
+        <h1>Layout and Sizing</h1>
+
+        <p>
+            The size and position of elements on the screen is a collaboration between 
+            the html and css. 
+            While HTML allows for grouping and insertion based ordering,
+            css gives us far greater control over how the browser arranges the page.
+        </p>
+
+        <h2 id="InternalSpacing">Internal Spacing</h2>
+
+        <p>
+            An element is given space to fill by it's parent. It may choose to use 
+            as much of this space as it wants.
+        </p>
+        
+        <p>
+            The outermost space an element controls is its margins.
+            The margin is the space between the outside of the element 
+            and the element's border.
+
+        </p>
+
+        <div class="visualpreview" style="width: fit-content;">
+            <button style="margin: 5px; padding: 10px; background-color: aqua; color: green; border: black 2px dashed;">
+                Content
+            </button>
+        </div>
+
+        <p>
+            The white space is the margin. Many elements have a default margin, 
+            but for this one, I specified <code>margin: 5px</code> set the width 
+            to 5 pixels for the top, bottom, left, and right.
+        </p>
+        <p>
+            Between the border and the inner content (the text) is the padding.
+            I set <code>padding: 10px;</code> putting 10 pixels between the content 
+            and the border. You can specify the padding or margin for just one side 
+            with <code>margin-top</code> and <code>padding-top</code>
+        </p>
+
+        <p>
+            Margin collapse is something the browser will do to adjacent elements
+            in some situations. It will reduce the total margin between them to the 
+            greatest of the two. So if you have two buttons next to eachother with 
+            <code>margin: 1em;</code>, the total space separating the buttons will 
+            be <code>1em</code>.
+        </p>
+
+        <h2 id="Dimensions">Dimensions</h2>
+        <p>
+            You can specify the <code>width</code> and <code>height</code> of an element 
+            with length values. There are a lot of different length units in css. 
+            I specified the padding and margins in the example from the above section
+            in terms of pixels: <code>5px</code>. Something to considers about this is 
+            that not all devices have the same sized pixels. I'm making this page on 
+            a 144dpi laptop screen, but many modern phones have a pixel density of over 
+            500 dpi. On those devices, that content label is going to look very small.
+        </p>
+<!--https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Values_and_units-->
+        <p>
+            You can specify distance in other absolute units, like centimeters 
+            (<code>cm</code>) or inches (<code>in</code>), or in relative units, 
+            <code>ch</code>, the width of the '0' character in the current font, 
+            <code>vw</code>, 1% of the viewport's width, or <code>em</code>, 
+            the size of the font of the parent element. Relative units <code>em</code>
+            are generally good to use because the browser knows how big fonts need 
+            to be for the user to read them. If we make everything relative to that,
+            it will be a usable size.
+        </p>
+
+        <p>
+            You can use percentages as a relative unit of length also. Setting an 
+            attribute to a percent will be relative to the parent element's value 
+            for that attribute. For example, setting the width of a child 
+            <code>width: 50%;</code> will make its width dynamically adjust to 
+            half its parents. If you resize the parent element, the child will 
+            resize also. You can resize your browser window to see this happening 
+            below.
+        </p>
+
+        <div id="relativelengthexample" class="visualpreview">
+            <style>
+                #relativelengthexample {
+                    padding-top: 0.5ch;
+                    padding-bottom: 0.5ch;
+                }
+                #relativelengthexample > div {
+                    border: 0.25em black solid;
+                    height: 2em;
+                    margin: 1ch;
+                    
+                }
+            </style>
+            <div style="width: 30%;">
+                30%
+            </div>
+            <div style="width: 100px;">
+                100px
+            </div>
+            <div style="width: 20em;">
+                20em
+            </div>
+            <div style="width: 5cm;">
+                5cm
+            </div>
+        </div>
+
+
+        <h2 id="Layouts">Layouts</h2>
+
+        <p>
+            An element's <code>display</code> property determines how it will 
+            layout its children, and
+            sometimes, how it 
+            should be treated by its parent.
+        </p>
+
+        <h3>Flow Layout</h3>
+
+        <p>
+            By default, elements layout their children using the Flow Layout.
+            Elements in a flow layout are either block or inline. Inline elements, 
+            like <a href="www.google.com">links</a>, will be drawn in line with other content. By default, 
+            <code>a { display: inline; }</code>.
+        </p>
+
+        <p>
+            Paragraphs are instead drawn one on top of the other because a paragraph 
+            has the <code>block</code> display value. If you set 
+            <code>p { display: inline; }</code>, then paragraphs wouldn't be 
+            separated.
+        </p>
+
+        <img style="float: right; width: 50%;" src="https://img.devrant.com/devrant/rant/r_1990393_vCjgs.jpg" alt="sponge bob meme about css floats">
+
+        <p>
+            The <code>float</code> attribute can be set on block elements inside 
+            a flow layout. Making an image <code>float: right;</code> will move it to 
+            the right side of the parent and make text (and other inline elements) 
+            flow around it.
+            
+        </p>
+
+        <p style="column-count: 2">
+            <code>column-count</code> can be applied to a flow layout element 
+            to control how many columns the inline children will use. Also see 
+            <code>column-gap</code>, <code>column-width</code> and 
+            <code>columns</code> in <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Columns#reference">Mozilla's Documentation</a>.
+        </p>
+        
+
+        <!--
+            https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Introduction
+            https://developer.mozilla.org/en-US/docs/Web/CSS/display#:~:text=The%20display%20CSS%20property%20sets,inner%20and%20outer%20display%20types.
+            https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout
+        -->
+        <p>
+            <code>block</code> and <code>inline</code> don't affect how their element 
+            will organize its children. Those two values only matter when the parent 
+            element is using the Flow Layout. There are other values of <code>display</code>
+            that DO affect how their element's children are layed out.
+        </p>
+
+        
+
+        <h3>Flex Layout</h3>
+
+        <p>
+            <code>display: flex;</code> tells an element to arrange it's children along one dimension, 
+            ignoring their <code>block</code> or <code>inline</code> properties.
+
+
+        </p>
+
+        <div>
+            <h4>Flow Layout</h3>
+            <div class="visualpreview">
+                <p>
+                    Paragraph 1
+                </p>
+                <p>
+                    Paragraph 2
+                </p>
+                <p>
+                    Paragraph 3
+                </p>
+            </div>
+            <h4>Flex Box Layout</h3>
+            <div class="visualpreview" style="display: flex;">
+                <p>
+                    Paragraph 1
+                </p>
+                <p>
+                    Paragraph 2
+                </p>
+                <p>
+                    Paragraph 3
+                </p>
+            </div>
+        </div>
+
+        <p>
+            The <code t="<div style='display: flex;'>"></code> element above is 
+                organizing it's elements in a row. This is the default behavior, 
+                and orientation can be set with <code>flex-direction: row;</code>
+                or <code>flex-direction: column;</code>:
+        </p>
+
+        <h4>Also Flex Box Layout</h3>
+        <div class="visualpreview" style="display: flex; flex-direction: column;">
+            <p>
+                Paragraph 1
+            </p>
+            <p>
+                Paragraph 2
+            </p>
+            <p>
+                Paragraph 3
+            </p>
+        </div>
+
+        <p>
+            Also notice that the white boxes holding the example are both treated by 
+            this article's body to be using the 
+            <code>block</code> layout, even though some of them have <code>display: flex;</code>.
+            On the outside, <code>flex</code> elements are blocks. It's also possible to have 
+            an inline flex element, specified <code>display: inline-flex;</code>:
+            <div id="inlineflex" class="visualpreview" style="display: inline-flex; margin: 0;">
+                <style>
+                    #inlineflex > p {
+                        margin: 0;
+                    }
+                </style>
+                <p>
+                    Paragraph 1
+                </p>
+                <p>
+                    Paragraph 2
+                </p>
+                <p>
+                    Paragraph 3
+                </p>
+            </div>
+            This flexbox is inline in this paragraph.
+        </p>
+
+        <p>
+            The children of a flex container become flex items. 
+            In the above examples where the flex container was wider than all the 
+            flex items could fill, the flex items 
+            didn't expand to fill the space. To allow an item to expand 
+            to fill any extra space, specify <code>flex: 1;</code> on it.
+            If multiple items have this specified, they will share the extra space 
+            propertionately to their <code>flex-grow</code> value specifed by 
+            <code>flex: number;</code>
+        </p>
+
+        <div class="visualpreview" style="display: flex">
+            <button>
+                flex: 0; (default)
+            </button>
+            <button>
+                flex: 0;
+            </button>
+            <button style="flex: 1">
+                flex: 1;
+            </button>
+        </div>
+
+        <h3 id="GridLayout">Grid Layout</h3>
+        <p>
+            <code>display: grid;</code> is like a 2d flex container.
+            You define the rows and columns the grid has with 
+            <code>grid-template-rows</code> and <code>grid-template-columns</code>,
+            each taking a space separated list of lengths.
+        </p>
+
+        <code-example example="grid_layout"></code-example>
+
+        <p>
+            Notice the unit <code>fr</code> which represents one fraction of 
+            the available space. 
+        </p>
+
+        <!--https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Introduction-->
+        <style>
+            #gridexample1 {
+                display: grid;
+                grid-template-columns: 1fr 1fr 2fr;
+                grid-template-rows: 100px 150px;
+                gap: 10px;
+            }
+        </style>
+
+        <div class="visualpreview" id="gridexample1">
+            <button>1</button>
+            <button>2</button>
+            <button>3</button>
+            <button>4</button>
+            <button>5</button>
+            <button>6</button>
+        </div>
+
+        <p>
+            The elements inside a grid layout element will automatically be placed 
+            into the grid. You can alternatively specify <code>grid-row</code> and 
+            <code>grid-column</code> for each element. The first space is the top 
+            left (1, 1). Values may include a range of spaces, like 
+            <code>grid-column: 1 / 2;</code> which will fill the first and second 
+            columns.
+        </p>
+
+        <h3>Centering Things</h3>
+        <p>
+            To center the content of an element using flow layout, set the 
+            <code>text-align</code> property.
+        </p>
+
+        <p>
+            To center the hmmmmmmmm
+        </p>
+
+        <h2 id="Position">Position</h2>
+
+        <p>
+            There are some things that can't be acheived with layouts alone.
+            The <code>position</code> property can be used with 
+            <code>top</code>, <code>bottom</code>, <code>left</code>, 
+            <code>right</code>, and <code>z-index</code> to bend some of css' rules.
+        </p>
+
+        <p>
+            By default, most elements are <code>position: static;</code>
+            meaning that they move with the normal flow of the document.
+        </p>
+
+        <p>
+            <code>position: relative;</code> will offset the element from the 
+            position it would have been by default. 
+            <code>position: relative; top: 5px;</code> will move the element 10 pixels 
+            down from wherever it was going to be drawn. This doesn't affect 
+            any other elements.
+        </p>
+
+        <p>
+            <code>position: absolute;</code> lets you draw the element relative to 
+            (in most cases) it's parent container. This means the element will still 
+            scroll with the content behind it, but no space will be allocated for it.
+        </p>
+
+        <p>
+            Notably, this creates the possibility of some elements being on top of
+            others in an undesired order. To specify this, use the <code>z-index</code>
+            property. Lower indexes are drawn earlier in a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context">stacking context</a>.
+        </p>
+
+        <p>
+            <code>position: fixed;</code> elements will be drawn relative to the 
+            viewport. If you want a pay wall on your website, this is what you want.
+        </p>
+
+        <p>
+            <code>position: sticky</code> elements will get <q>stuck</q> to a specified 
+            edge of the screen when scrolling. <code>position: sticky; top: 10px;</code>
+            will stick the 
+            element 10 pixels from the to of the screen.
+        </p>
+
+        <p>
+            When using these things, it's important to think about how they could 
+            interfere with content when the page is scaled. <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/CSS/position#try_it">Mozilla</a> also has a 
+            beautiful demonstration of these properties I can't recreate.
+        </p>
+
+        <p>
+            <code>top</code>, <code>bottom</code>, <code>left</code>, and <code>right</code>
+            can also be used to specify size of an element. If <code>width: auto;</code>, 
+            setting <code>left: 0px; right: 0px;</code> will set the width of the element
+            to fill the space. If <code>width</code> had been specified absolutely though,
+            the element would have been positioned on either the left or right depending 
+            on the language direction of the document.
+        </p>
+
+        <h2>Using the right versions of div and accessibility?</h2>
+
+        
+
+        <p>Now that CSS is already introduced: the display property, margins, borders, padding, content boxes, centering text vs elements, how things center, inline, block, flex, css grid (ig you didn't go back and put normal table in the "Adding Content" topic. Overflow handling, positon, sticky, absolute, relative, fixed</p>
+        <p>Depending on how much I procrastinate, maybe some cool interactive examples of layout</p>
+        <p>Include distance, angle stuff for css</p>
+        <p>Mention nav, main, footer, aside, section, article and accessibility</p>
+        
+  </body>
+</html>

@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="topicstyle.css">
+        <script src="topiclogic.js"></script>
+    </head>
+    <body onload="onLoad()">
+        <h1>Stylizing Elements</h1>
+        <p>
+            CSS is a language that's used with HTML to adjust how elements look. 
+            If HTML was all the nouns in a webpage, CSS would be all the adjectives.
+        </p>
+        <h2 id="Syntax">Syntax</h2>
+        <p>
+            CSS text is a list of rules. 
+            A rule in CSS follows the form <code t="selector { attribute: value; attribute: value; }"></code>. 
+            The selector determines which elements the rule applies to, 
+            and the <q>{}</q> block contains declarations (<code t="attribute: value;"></code> pairs)
+            to apply to them. 
+            Whitespace and indentation are ignored in CSS.
+        </p>
+        <code-example example="css_example"></code-example>
+
+        <p>
+            The above sets the <code>background-color</code> attribute of this entire page 
+            (the <code>body</code> element) to color value <code>orange</code>.
+        </p>
+
+        <h2 id="Selectors">Selectors</h2>
+        <p>
+            There are a few different formats a selector string can have.
+        </p>
+        <h3>Element Selectors - TODO: should I mention universal selector?</h3>
+        <p>
+            <code>p</code>, <code>body</code>, and <code>h1</code> are all element selectors.
+            By using just the tag name of any html element, all elements of that type will 
+            be selected. Multiple tags separated by spaces, like <code>p h1</code>, 
+            will select the <b>union</b> of those selectors (all paragraphs and all 
+            level 1 headers).
+        </p>
+
+        <code-example example="css_example_groupselector"></code-example>
+
+        <h3>Attribute Selectors</h3>
+        <p>
+            You can also discriminate elements by their attributes.
+        </p>
+        <p>
+            If you specify the <code>id</code> attribute of an 
+            element (<code t="<p id=paragraph1>...</p>"></code>) you can then refrence that element 
+            with the selector <code>#paragraph1</code>. This selector will only apply the rule 
+            to the first element it finds with the given id. Elements should have unique ids.
+        </p>
+        <p>
+            The <code>class</code> attribute doesn't need to be unique. It should be used 
+            to identify multiple elements that all require common formatting.
+            The selector for class type is <code>.className</code>.
+        </p>
+        <p>
+            Class names and IDs can't contain spaces. An element can have multiple classes 
+            specified by putting spaces in the class attribute like <code>class="c1 c2"</code>.
+        </p>
+        <p>
+            You can specify by any arbitrary attribute with the attribute selector 
+            <code>[attribute="value"]</code>. There are a lot of little tricks you can 
+            do with this <a target="_blank" href="https://www.w3schools.com/css/css_attribute_selectors.asp">w3Schools</a> .
+        </p>
+        <p>
+            Attribute selectors can be prefixed by an element selector. <code>p.special</code> 
+            will select only paragraphs with the special class. <code>a[target="_blank"]</code> 
+            only links that will open their content in a new page. Attribute selectors can 
+            also be stacked, refrencing more and more specific groups. <code>a.glowing[target="_self"]</code> 
+            selects links with the glowing class that will replace the current page when clicked.
+        </p>
+
+        <p>
+            There are lots of other wacky selectors listed <a target="_blank" href="https://www.w3schools.com/css/css_selectors.asp">here</a>. 
+        </p>
+
+        <p>Here's a box you can use to change the style of this lesson.</p>
+        <script>
+            function updateCSS() {
+                let style = document.getElementById("customstyle");
+                style.textContent = document.getElementById("cssbox").value;
+            }
+            function resetCSS() {
+                let style = document.getElementById("customstyle");
+                style.textContent = "";
+            }
+        </script>
+        <style id="customstyle"></style>
+        <textarea style="display: block; width: 100%; aspect-ratio: 1/0.5;" spellcheck="false" name="css" id="cssbox" cols="30" rows="10" onkeyup="updateCSS()" onclick="updateCSS()">
+body {
+    background-color: white;
+    color: black;
+}
+h2 {
+    background-color: green;
+    padding: 3ch;
+}
+        </textarea>
+        <button onclick="resetCSS()">Reset Lesson Style</button>
+
+        <h2 id="Declarations">
+            Declarations
+        </h2>
+        <p>
+            One rule will usually contian multiple selectors. Again, they take the form 
+            <code>attribute-name: value;</code>, as in <code>font-size: large;</code>.
+            CSS attributes don't use camel case (capitalizingTheFirstLetterOfWords),
+            instead they separate words with <q>-</q>, as in <code>text-align</code>.
+            CSS naming convention is a big thing you can <a target="_blank" href="https://www.freecodecamp.org/news/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849/">read about</a>.
+        </p>
+        <p>
+            There are quite a few attributes. I'll list a few here, but generally new 
+            attributes are discovered by googling <q>How to do ____ in css</q>.
+        </p>
+
+        <p>
+            The colors of an element can be set with <code>color</code> and 
+            <code>background-color</code>. CSS has quite a few standard color names 
+            like <code>orange</code>, <code>tomato</code>, <code>coral</code>, 
+            <code>darkgreen</code>, and <code>white</code>. You can also specify 
+            rgb values with <code>rgb(red, green, blue)</code> where each color 
+            is an integer [0, 255]. You can also use <code>rgba(...)</code> and 
+            specify a final alpha value for transparency [0 (transparent), 1 (opaque)].
+            Hex values can be prefixed by <q>#</q> as like in <code>#FFFFFF</code>.
+        </p>
+
+        <p style="background-color: lightgray">
+            The background of an element can be set using any of the <code>background-</code>
+            properties discussed <a target="_blank" href="https://www.w3schools.com/css/css_background.asp">here</a>.
+            This paragraph has been formated with <code>background-color: lightgray</code>.
+        </p>
+
+        <p style="border: black dotted 3px;">
+            You can add borders to an element with the <code>border-</code> elements.
+            There are also many convenient shorthand attributes. <code>border</code>
+            can be used to specify multiple details about a border at once. This 
+            paragraph has been formatted with <code>border: black dotted 3px;</code>
+        </p>
+
+        <p>
+            With the more specific <code>border-</code> attributes, you can specify 
+            <code>border-width</code>, <code>border-color</code>, <code>border-style</code>
+            (dotted, dashed, solid...), <code>border-radius</code> 
+            (for rounded borders), and attributes specific to each border separately: 
+            <code>border-top-color</code>, <code>border-left-style</code>.
+        </p>
+
+        
+        <h3>
+            CSS Types
+        </h3>
+
+        <p>
+            Different attributes demand different types of values. There isn't 
+            a compile-check for types as seen in languages like Java. Instead, 
+            if you specify a value that doesn't make sense, CSS will just ignore it 
+            and continue on.
+        </p>
+
+        <!--https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Values_and_Units-->
+        <p>
+            All css attributes will take <code>initial</code>, <code>inherit</code>, 
+            or <code>unset</code>, which define the value relative to it's default value 
+            or the parent element.
+        </p>
+        
+        <p>
+            Attributes like border-style take pre-defined keywords, in it's case, 
+            dotted | dashed | solid | groove | ridge | inset | outset | none | hidden.
+        </p>
+
+        <p>
+            <code>background-image</code> requires a URL value, notated 
+            <code>url("path/to/image")</code>.
+        </p>
+            
+        <p>
+            TODO: Expand on this section or replace with a link to mozilla
+            https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Values_and_Units
+        </p>
+
+        <h2 id="Implementation">
+            Using CSS in Your Website
+        </h2>
+        <p>
+            CSS code is usually stored .css files. An HTML document that wants to use 
+            those styles will then import that file by adding a link element like 
+            <code t="<link rel='stylesheet' href='filename.css'>"></code>.
+            (Notice there is no closing tag required on link elements.)
+        </p>
+        <p>
+            It is also possible to store CSS inside a <code t="<style>...</style>"></code> 
+            element, directly in the HTML code, or to put declarations for a 
+            particular element directly 
+            in the style attribute of an element: 
+            <code t="<h1 style='background-color: white'></h1>"></code>
+        </p>
+        
+        <h2 id="Cascading">Cascading Style</h2>
+        <p>
+            CSS Stands for Cascading Style Sheet. This name points out a central 
+            property of css: that later declarations override earlier ones.
+        </p>
+
+        <p>
+            In the declaration list for a rule, if <code>color: orange;</code> 
+            succeeds <code>color: white;</code>, <code>color</code> 
+            will be set to <code>orange</code>. A succeeding rule with the same 
+            selector will only override the values of specified attributes; 
+            <code>p { color: gray; background-color: green }</code> followed 
+            by <code>p { color: red }</code> will have red text on a green background.
+        </p>
+
+        <code-example example="css_example_cascading"></code-example>
+
+        <p>
+            Similarly,
+            when CSS is put in multiple places,
+            the last CSS that is read takes precident.
+            If you link a style sheet that makes <code t="<h1>"></code> green, 
+            then have a <code t="<style></style>"></code> element later in your HTML 
+            that specifies white, 
+            the header will be white because the style element was read after the 
+            linked stylesheet.
+        </p>
+
+        <p>
+            The <code>body</code> element will end with the value <code>white</code> 
+            as it's background-color
+        </p>
+
+        <code-example example="css_in_html"></code-example>
+        <code-example example="style_css"></code-example>
+
+        
+
+        
+
+        <h2>Dynamic Selectors (check what they're actually called)</h2>
+
+
+        <h3>TODO:</h3>
+        <p>Dynamic styling with element:hover and similar (look up how that all works)</p>
+        <p>Mention most of the attributes I use, explain the concept of types in css, how selectors work</p>
+        
+        
+  </body>
+</html>

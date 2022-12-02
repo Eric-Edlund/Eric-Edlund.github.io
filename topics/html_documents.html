@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <link rel="stylesheet" href="topicstyle.css">
+        <script src="topiclogic.js"></script>
+    </head>
+    <body onload="onLoad()">
+        
+        <h1 text="<HTML Documents>"></h1>
+            <p>
+                TODO: Use main, article, nav
+            </p>
+        <p>
+            The content of a webpage is stored in Hyper 
+            Text Markup Language (HTML). HTML code is stored 
+            in plain text files ending in <q>.html</q>. 
+        </p>
+        
+        <h2 id="Elements">Elements</h2>
+        
+        <p>An HTML document is a collection of Elements, each notated with an opening tag, 
+            like <code text="<element>"></code>, and a matching closing tag,
+            like <code text="</element>"></code>. 
+            An element is really just a <strong>thing</strong>.
+            
+        </p>
+        <p>
+            There are many different types of elements (things) that you 
+            can have on your website (currently, this html document).
+            What type of element you have is specified in the opening and 
+            closing tags. A <code t="<cat></cat>"></code>, for example, 
+            could be a <i>cat</i> element, while <code t="<dog></dog>"></code>
+            could represent a dog.
+        </p>
+        <p>
+            Something very important to notice is that
+            <code t="<cat></dog>"></code> does not constitute an element.
+            Upon arriving a line like this, a web browser (the thing 
+            drawing your website!) would have no idea what you were 
+            saying. Closing tags need to match opening ones.
+        </p>
+        <p>
+            Sadly, the <code t="cat"></code> element isn't a part 
+            of the HTML standard, and so a web browser wouldn't 
+            know what to do with it if you used one.
+        </p>
+
+        <p>
+            For an html file to be a proper website, there are 
+            a few important elements it needs to have. Firstly, 
+            <code t="<!DOCTYPE html>"></code> needs to appear 
+            at the top of the document. This tells the browser what 
+            it's looking at. Under that, you need an 
+            <code>html</code> element. In HTML, spaces, indentation 
+            and new lines don't affect how the document will be read,
+            so you should use those things to produce an organized, 
+            human readable document. As long as the <code>html</code>
+            element appears after that heading, it should work.
+        </p>
+
+        <h2>Nested Elements</h2>
+
+        <p>
+            The <code>html</code> element will contain all the 
+            information about the web page. Inside the html element,
+            between it's opening and closing tags, you may put other 
+            nested elements. Elements inside other elements take on a 
+            parent-child relationship. The elements inside an 
+            element are that element's children, and the element 
+            surrounding a child element is its parent. An element 
+            can have multiple children (who are siblings to each other).
+        </p>
+
+        <p>
+            The html element of a website has two important children:
+            <ol>
+                <li>
+                    The <code text="<head></head>"></code> element
+                    contains data <i>about</i>
+                 the website, like what language it's in and what should 
+                 be displayed on the tab. Nothing in the <code>head</code>
+                 will be displayed on the page.
+                </li>
+                <li>
+                    The <code text="<body></body>"></code> contains 
+                    the content <i>on</i>
+                    the page. Its children hold text,
+                    images, links, videos and whatever else
+                    your site has on it.
+                </li>
+            </ol>
+        </p>
+        <p>
+            Here's what this all starts to look like:
+        </p>
+
+        <code-example example="basic_html"></code-example>
+
+        <p>
+            Inside the <code>head</code> element, you can see the 
+            <code>title</code> element. <code>title</code> contains 
+            the text to be displayed on the site's tab. Note that 
+            in the text inside the <code>title</code> element, 
+            <code>Text Displayed on the Tab</code>, spaces will 
+            be preserved. The message will appear exactly how it 
+            looks in the html. This is only true for single spaces.
+            Tabs, multiple spaces and newlines are trimmed.
+        </p>
+
+        <p>
+            In the <code>body</code>, there is only 1 element.
+            The first thing, <code t="<!--...-->"></code>, is 
+            a comment. It's contents will be ignored by the browser
+            and its only there for humans to make notes.
+            The element that the browser will see is the 
+            paragraph element, notated as just <code>p</code>.
+            Paragraphs will format their text to make it look 
+            like a parargaph. <code>p</code> is, again, one of 
+            many many different elements in html you can use.
+            There are far too many to cover, but I'll go over 
+            some of them in the next topic.   
+        </p>
+            
+        <h2 id="HelpfulTools">Helpful Tools</h2>
+
+        <p>
+            An IDE like
+            <a href="https://code.visualstudio.com/download">Visual Studio Code</a> 
+            is <strong>highly recommended</strong> as it will bring small,
+            non-obvious yet frustrating issues in your html code 
+            to your attention. It will prevent you from spending an hour
+            searching over your code trying to figure out why it won't 
+            work and then realizing it was because you forgot to put 
+            a <q>"</q>, or close an element, or some other insignificant 
+            detail you shouldn't spend time thinking about.
+            Frequently, it will also be able to explain your mistake and 
+            offer a solution to fix it. Your IDE will be like a set of 
+            training wheels for now,
+            and provide other powerful tools to you later.
+        </p>
+        <p>
+            There are a hundred IDEs out there, and just like 
+            spirit animals and wands, you have to find yours.
+        </p>
+
+        <p>
+            TODO: Talk about inspector in Chrome, Validators
+        </p>
+
+        <h2>URLs</h2>
+
+        <p>
+            Your webpage (currently just a file ending in .html) can be
+            opened with a web browser like Chrome, Firefox, Safari, Edge,
+            Brave or Opera. If you are reading this tutorial, you're on a 
+            web browser!
+            Open your page by right clicking your HTML file and selecting 
+            <q>Open with...</q> and picking a browser.
+        </p>
+
+        
+
+        <br><br><br>
+
+
+
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+        <p>
+            Note the importance of the closing <code text="</tag>"></code>. If you forget to 
+            close an element, stuff starts breaking. 
+        </p>
+
+        
+
+        <p>
+             
+        </p>
+
+
+        
+        
+        
+        <p>
+            Things to do: <br>
+            - Syntax of html<br>
+            - common errors<br>
+            - Overview of the types of stuff you can do<br>
+            - Comments<br>
+            - How the file tree works for websites and things to come<br>
+            [Don't get carried away with attributes]<br>
+            - Put browser differences in "Adding Content"
+        </p>
+        <p>Throw in some stuff about browser compatibility</p>
+  </body>
+</html>
