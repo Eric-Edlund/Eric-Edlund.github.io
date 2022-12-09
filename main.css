@@ -54,21 +54,6 @@ nav > a:not(.active_topic_entry):hover {
 }
 
 
-.active_topic_entry:not(.sub_topic) {
-    background-color: rgba(255, 255, 255, 0.3);
-}
-
-.active_topic_entry.sub_topic {
-    background-color: rgba(255, 255, 255, 0.3);
-    border-radius: 0.5ch;
-
-    width: fit-content;
-    padding: 0.5ch;
-    padding-left: 1ch;
-    padding-right: 1ch;
-    margin-left: 4ch;
-}
-
 nav > a:active {
     color: orange;
 }

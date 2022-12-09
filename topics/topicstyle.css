@@ -94,18 +94,3 @@ td {
 .visualpreview > * {
     border: black 1px solid;
 }
-
-a {
-    color: blue;
-    transition: 0.25s;
-    font-size: initial;
-}
-
-a:visited {
-    color: blue;
-}
-
-a:hover {
-    transition: 0.25s;
-    font-size: 1.2em;
-}

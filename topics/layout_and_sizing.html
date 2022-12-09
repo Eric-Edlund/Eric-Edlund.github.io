@@ -56,6 +56,47 @@
             be <code>1em</code>.
         </p>
 
+        <p>
+            If an element doesn't have enough space to show all its content, 
+            the content will be drawn outside the content box by default.
+        </p>
+
+        <div class="visualpreview">
+            <div style="background-color: lightgray; height: 10ch; padding: 1ch;">
+                <div style="background-color: green; height: 15ch; width: 20%; border: black 1px solid;">
+
+                </div>
+            </div>
+        </div>
+        <br><br>
+
+        <p>
+            Note that the space the green box occupies outside the gray one is 
+            not accounted for when arranging elements on the screen. I had to 
+            put extra spacing under the gray box so the green didn't cover any text.
+        </p>
+        <p>
+            By setting
+            <code>overflow: visible | hidden | scroll | auto</code> attribute,
+            you can override default behavior. <code>auto</code> will show 
+            the scroll bars if there isn't sufficient space. <code>hidden</code>
+            won't show the scroll bars, clipping the content inside the box.
+            <code>scroll</code> will show the bars even when they're not necessary.
+            <code>visible</code> is the default.
+        </p>
+
+        <p>
+            <code>auto</code>:
+        </p>
+
+        <div class="visualpreview">
+            <div style="background-color: lightgray; height: 10ch; padding: 1ch; overflow: auto;">
+                <div style="background-color: green; height: 15ch; width: 20%; border: black 1px solid;">
+
+                </div>
+            </div>
+        </div>
+
         <h2 id="Dimensions">Dimensions</h2>
         <p>
             You can specify the <code>width</code> and <code>height</code> of an element 
@@ -130,7 +171,8 @@
         <p>
             By default, elements layout their children using the Flow Layout.
             Elements in a flow layout are either block or inline. Inline elements, 
-            like <a href="www.google.com">links</a>, will be drawn in line with other content. By default, 
+            like <a href="www.google.com">links</a>, will be drawn in-line with other content.
+            By default, 
             <code>a { display: inline; }</code>.
         </p>
 
@@ -138,7 +180,7 @@
             Paragraphs are instead drawn one on top of the other because a paragraph 
             has the <code>block</code> display value. If you set 
             <code>p { display: inline; }</code>, then paragraphs wouldn't be 
-            separated.
+            separated like  hthis.
         </p>
 
         <img style="float: right; width: 50%;" src="https://img.devrant.com/devrant/rant/r_1990393_vCjgs.jpg" alt="sponge bob meme about css floats">
@@ -165,7 +207,8 @@
             https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flow_Layout
         -->
         <p>
-            <code>block</code> and <code>inline</code> don't affect how their element 
+            Display values of 
+            <code>block</code> or <code>inline</code> don't affect how their element 
             will organize its children. Those two values only matter when the parent 
             element is using the Flow Layout. There are other values of <code>display</code>
             that DO affect how their element's children are layed out.
@@ -314,20 +357,47 @@
         <p>
             The elements inside a grid layout element will automatically be placed 
             into the grid. You can alternatively specify <code>grid-row</code> and 
-            <code>grid-column</code> for each element. The first space is the top 
+            <code>grid-column</code> in each element's style. The first space is the top 
             left (1, 1). Values may include a range of spaces, like 
             <code>grid-column: 1 / 2;</code> which will fill the first and second 
             columns.
         </p>
 
         <h3>Centering Things</h3>
+        <h4>Horizontally</h4>
         <p>
-            To center the content of an element using flow layout, set the 
-            <code>text-align</code> property.
+            To center the inline content of an element using flow layout, set the 
+            <code>text-align</code> property. Block elements will always take the full 
+            width, so they have to center their own content.
+        </p>
+        <p>
+            Flex box and grid layouts give their children the full space they demand
+            through <code>flex-grow</code> or their grid dimensions. Content inside the 
+            children is centered normally. 
         </p>
 
+        <h4>Veritcally</h4>
         <p>
-            To center the hmmmmmmmm
+            In Flow Layouts, inline elements can be assigned a <code>vertical-align: 
+                baseline | sub | super | text-top | text-bottom | middle | top | bottom
+            </code>. This will control how the element lines up with the other inline elements.
+        </p>
+
+        <div class="visualpreview">
+            Text <span style="vertical-align: sub">sub</span>
+            <span style="vertical-align: super;">super</span>
+        </div>
+
+        <p>
+            Aligning inline elements vertically with respect to the parent element 
+            can be done by adding padding to the parent like <code>padding-top: 50%;</code>.
+            This isn't perfect; the element's top edge will be centered.
+            Another imperfect way of doing this is setting <code>font-size</code> to the 
+            height of the container. This only works if you have one line of text though.
+        </p>
+        <p>
+            Flow Layout isn't really meant for vertical centering.
+            Using a flexbox, grid or table with expanding cells is an alternative.
         </p>
 
         <h2 id="Position">Position</h2>
@@ -361,7 +431,7 @@
         <p>
             Notably, this creates the possibility of some elements being on top of
             others in an undesired order. To specify this, use the <code>z-index</code>
-            property. Lower indexes are drawn earlier in a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context">stacking context</a>.
+            property. Lower indexes are drawn earlier in a <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Positioning/Understanding_z_index/The_stacking_context" target="_blank">stacking context</a>.
         </p>
 
         <p>
@@ -391,13 +461,32 @@
             on the language direction of the document.
         </p>
 
-        <h2>Using the right versions of div and accessibility?</h2>
+        <h2>Accessibility in Layouts</h2>
+        <p>
+            Blind people still use the internet. HTML documents are analyzed 
+            by software and read aloud to them. This software depends on the 
+            document following accessibility standards in its design.
+        </p>
+        <p>
+            It's important that the specific variants of <code>div</code> are 
+            used correctly. <code>nav</code> contains links to other pages
+            as seen on the left. There is only one <code>nav</code> per page.
+            <code>main</code> holds the primary content on the page (there is 
+            also only one). <code>article</code> marks content that could exist independently from 
+            the rest of the page. <code>footer</code> contains stuff at the bottom,
+            <code>header</code> at the top, <code>section</code> breaks apart long 
+            documents.
+        </p>
+        <p>
+            That's definately not all of them. <a href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility/HTML">Mozilla</a> 
+            has written about accessibility 
+            extensively.
+        </p>
+        <p>
+            Throwing your site into an <a href="https://www.accessibilitychecker.org/" target="_blank">accessibility checker</a>
+            will reveal many of the things you're not doing.
+        </p>
 
-        
-
-        <p>Now that CSS is already introduced: the display property, margins, borders, padding, content boxes, centering text vs elements, how things center, inline, block, flex, css grid (ig you didn't go back and put normal table in the "Adding Content" topic. Overflow handling, positon, sticky, absolute, relative, fixed</p>
-        <p>Depending on how much I procrastinate, maybe some cool interactive examples of layout</p>
-        <p>Include distance, angle stuff for css</p>
         <p>Mention nav, main, footer, aside, section, article and accessibility</p>
         
   </body>

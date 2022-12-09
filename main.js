@@ -6,7 +6,7 @@
 // If the selector is expanded or not
 var topicSelector = true;
 // Text content of the topic entry
-var topicEntryText = "Adding Content";
+var topicEntryText = "Layouts";
 
 
 /**

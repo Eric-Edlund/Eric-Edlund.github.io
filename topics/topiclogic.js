@@ -90,9 +90,8 @@ const example_texts = {
         <title>Text Displayed on the Tab</title>
     </head>
     <body>
-        <!--A comment. This text is ignored by the browser-->
         <p> 
-            A paragraph containing text.
+            A paragraph element (<p>) containing this text.
         </p>
     </body>
 </html>`,
@@ -212,5 +211,28 @@ h {
     <button>5</button>
     <button>6</button>
 </div>`
+    },
+
+    elements: {
+        label: "HTML Containing a Cat and a Dog",
+        code: `<!--A cat element followed by a dog-->
+<cat>
+</cat>
+<dog></dog>
+
+<!--Nonsense-->
+<cat></dog>`
+
+    },
+
+    nesting_elements: {
+        label: "",
+        code: `<cat>
+    <heart></heart>
+    <lung></lung>
+    <lung></lung>
+    <evil></evil>
+</cat`
+
     }
 };

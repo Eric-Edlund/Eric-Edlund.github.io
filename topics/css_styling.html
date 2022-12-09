@@ -24,14 +24,14 @@
 
         <p>
             The above sets the <code>background-color</code> attribute of this entire page 
-            (the <code>body</code> element) to color value <code>orange</code>.
+            (the <code>body</code> element) to the color value <code>orange</code>.
         </p>
 
         <h2 id="Selectors">Selectors</h2>
         <p>
             There are a few different formats a selector string can have.
         </p>
-        <h3>Element Selectors - TODO: should I mention universal selector?</h3>
+        <h3>Element Selectors</h3>
         <p>
             <code>p</code>, <code>body</code>, and <code>h1</code> are all element selectors.
             By using just the tag name of any html element, all elements of that type will 
@@ -59,13 +59,19 @@
         </p>
         <p>
             Class names and IDs can't contain spaces. An element can have multiple classes 
-            specified by putting spaces in the class attribute like <code>class="c1 c2"</code>.
+            specified by putting spaces in the class attribute, like <code>class="c1 c2"</code>.
         </p>
         <p>
-            You can specify by any arbitrary attribute with the attribute selector 
-            <code>[attribute="value"]</code>. There are a lot of little tricks you can 
-            do with this <a target="_blank" href="https://www.w3schools.com/css/css_attribute_selectors.asp">w3Schools</a> .
+            You can descriminate by any arbitrary attribute by using the attribute selector 
+            <code>[attribute="value"]</code>. <code>[href="www.google.com"]</code> will select 
+            only elements with the attribute <code t='<a href="www.google.com">...</a>'></code>.
+        </p> 
+
+        <p>
+            You can select elements based on their parent element with <code>parent type > child</code>
+            like in <code>p > p</code>. This will only select sub-paragraphs.
         </p>
+
         <p>
             Attribute selectors can be prefixed by an element selector. <code>p.special</code> 
             will select only paragraphs with the special class. <code>a[target="_blank"]</code> 
@@ -78,38 +84,20 @@
             There are lots of other wacky selectors listed <a target="_blank" href="https://www.w3schools.com/css/css_selectors.asp">here</a>. 
         </p>
 
-        <p>Here's a box you can use to change the style of this lesson.</p>
-        <script>
-            function updateCSS() {
-                let style = document.getElementById("customstyle");
-                style.textContent = document.getElementById("cssbox").value;
-            }
-            function resetCSS() {
-                let style = document.getElementById("customstyle");
-                style.textContent = "";
-            }
-        </script>
-        <style id="customstyle"></style>
-        <textarea style="display: block; width: 100%; aspect-ratio: 1/0.5;" spellcheck="false" name="css" id="cssbox" cols="30" rows="10" onkeyup="updateCSS()" onclick="updateCSS()">
-body {
-    background-color: white;
-    color: black;
-}
-h2 {
-    background-color: green;
-    padding: 3ch;
-}
-        </textarea>
-        <button onclick="resetCSS()">Reset Lesson Style</button>
 
         <h2 id="Declarations">
             Declarations
         </h2>
         <p>
-            One rule will usually contian multiple selectors. Again, they take the form 
+            One rule will usually contian multiple declarations. Again, they take the form 
             <code>attribute-name: value;</code>, as in <code>font-size: large;</code>.
             CSS attributes don't use camel case (capitalizingTheFirstLetterOfWords),
             instead they separate words with <q>-</q>, as in <code>text-align</code>.
+            Less specific words go first, unlike how adjectives preceed nouns in English.
+            The top border of an element is refered to as <code>border-top</code> and 
+            the left padding <code>padding-left</code>. Notice the similarity to 
+            dot notation as seen in most programming languages: 
+            <code>object.property</code> is like <code>padding.left</code>.
             CSS naming convention is a big thing you can <a target="_blank" href="https://www.freecodecamp.org/news/css-naming-conventions-that-will-save-you-hours-of-debugging-35cea737d849/">read about</a>.
         </p>
         <p>
@@ -125,13 +113,15 @@ h2 {
             rgb values with <code>rgb(red, green, blue)</code> where each color 
             is an integer [0, 255]. You can also use <code>rgba(...)</code> and 
             specify a final alpha value for transparency [0 (transparent), 1 (opaque)].
-            Hex values can be prefixed by <q>#</q> as like in <code>#FFFFFF</code>.
+            Hex literals are prefixed by <q>#</q> like in <code>#FFFFFF</code>.
         </p>
 
         <p style="background-color: lightgray">
             The background of an element can be set using any of the <code>background-</code>
             properties discussed <a target="_blank" href="https://www.w3schools.com/css/css_background.asp">here</a>.
             This paragraph has been formated with <code>background-color: lightgray</code>.
+            This is shorthand for specifying 
+            <code>border-color: black; border-style: dotted; border-width: 3px;</code>.
         </p>
 
         <p style="border: black dotted 3px;">
@@ -149,39 +139,17 @@ h2 {
             <code>border-top-color</code>, <code>border-left-style</code>.
         </p>
 
-        
-        <h3>
-            CSS Types
-        </h3>
-
         <p>
-            Different attributes demand different types of values. There isn't 
-            a compile-check for types as seen in languages like Java. Instead, 
-            if you specify a value that doesn't make sense, CSS will just ignore it 
-            and continue on.
+            There are many more declarations and attributes in CSS.
+            There is a rough and mostly intuitive <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Values_and_Units">type system</a>
+            , although I don't think its worth understanding.
+            Generally when you look up a new attribute, you will 
+            find documentation on it's allowed values. For most attributes
+            you can specify <code>initial</code>, <code>inherit</code>,
+            or <code>unset</code> to set the value relative to the default 
+            or the parent.
         </p>
 
-        <!--https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Values_and_Units-->
-        <p>
-            All css attributes will take <code>initial</code>, <code>inherit</code>, 
-            or <code>unset</code>, which define the value relative to it's default value 
-            or the parent element.
-        </p>
-        
-        <p>
-            Attributes like border-style take pre-defined keywords, in it's case, 
-            dotted | dashed | solid | groove | ridge | inset | outset | none | hidden.
-        </p>
-
-        <p>
-            <code>background-image</code> requires a URL value, notated 
-            <code>url("path/to/image")</code>.
-        </p>
-            
-        <p>
-            TODO: Expand on this section or replace with a link to mozilla
-            https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Values_and_Units
-        </p>
 
         <h2 id="Implementation">
             Using CSS in Your Website
@@ -197,7 +165,7 @@ h2 {
             element, directly in the HTML code, or to put declarations for a 
             particular element directly 
             in the style attribute of an element: 
-            <code t="<h1 style='background-color: white'></h1>"></code>
+            <code t='<h1 style="background-color: white"></h1>''></code>
         </p>
         
         <h2 id="Cascading">Cascading Style</h2>
@@ -236,17 +204,39 @@ h2 {
         <code-example example="css_in_html"></code-example>
         <code-example example="style_css"></code-example>
 
-        
+        <h2 id="TryOutCSS">
+            Try Out CSS
+        </h2>
 
-        
-
-        <h2>Dynamic Selectors (check what they're actually called)</h2>
-
-
-        <h3>TODO:</h3>
-        <p>Dynamic styling with element:hover and similar (look up how that all works)</p>
-        <p>Mention most of the attributes I use, explain the concept of types in css, how selectors work</p>
-        
-        
+        <p>Here's a box you can use to change the style of this lesson.</p>
+        <p>
+            Because of how the page is formatted, you can only alter 
+            content inside the lesson box, not the nav on the left. 
+            Code examples use the <code>code-example</code> element, 
+            the first 4 levels of headers are used, the body element 
+            and inline code formatted text uses <code>code</code> element.
+        </p>
+        <script>
+            function updateCSS() {
+                let style = document.getElementById("customstyle");
+                style.textContent = document.getElementById("cssbox").value;
+            }
+            function resetCSS() {
+                let style = document.getElementById("customstyle");
+                style.textContent = "";
+            }
+        </script>
+        <style id="customstyle"></style>
+        <textarea style="display: block; width: 100%; aspect-ratio: 1/0.5;" spellcheck="false" name="css" id="cssbox" cols="30" rows="10" onkeyup="updateCSS()" onclick="updateCSS()">
+body {
+    background-color: white;
+    color: black;
+}
+h2 {
+    background-color: green;
+    padding: 3ch;
+}
+        </textarea>
+        <button onclick="resetCSS()">Reset Lesson Style</button>
   </body>
 </html>
