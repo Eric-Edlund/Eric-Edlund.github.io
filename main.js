@@ -5,8 +5,8 @@
 
 // If the selector is expanded or not
 var topicSelector = true;
-// Text content of the topic entry
-var topicEntryText = "Layouts";
+// Text content of the nav entry, empty string is front page
+var topicEntryText = "HTML Documents";
 
 
 /**
@@ -45,7 +45,7 @@ function toggleTopicSelector(state = undefined) {
 }
 
 /**
- * Sets the current topic.
+ * Sets the current topic, if empty string, do nothing.
  * Sets the source of the topic_view iframe.
  * Sets the global currentTopic variable.
  * Only the active topic may be display it's subtopics in the topic selector.
@@ -57,12 +57,13 @@ function activateTopic(topic, entry) {
     if (entry === undefined) {
         //alert("activateTopic() missing arg 'entry'")
     }
+    if (topic == "") return;
 
     topicEntryId = topic;
     document.getElementById("topic_view").src = topic;
 
     // deactivate all the not-active entries
-    Array.from(document.querySelectorAll("nav > a"))
+    Array.from(document.querySelectorAll("a"))
         .forEach(element => {
             
             element.classList.remove("active_topic_entry");

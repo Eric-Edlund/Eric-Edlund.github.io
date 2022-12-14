@@ -20,6 +20,7 @@ nav {
     color: white;
     text-decoration: none; /*Don't let the links look like links*/
     overflow: auto;
+    overflow-x: hidden;
 }
 
 nav > a {
@@ -61,6 +62,7 @@ nav > a:active {
 #toggleTopicSelectorButton {
     white-space: nowrap;
     margin: .5ch;
+    margin-left: 0;
     background-color: transparent;
     border: none;
     font-size: large;
@@ -69,7 +71,9 @@ nav > a:active {
 }
 
 .topicSelectorControls {
-    text-align: right;
+    display: flex;
+    flex-direction: row;
+    background-color:rgba(0, 0, 0, 0.2)
 }
 
 main {

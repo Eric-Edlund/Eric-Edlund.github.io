@@ -9,6 +9,11 @@
     <body onload="init()">
         <nav id="topic_selector">
             <div class="topicSelectorControls">
+                
+                <a onclick="activateTopic('topics/frontcover.html', this)"
+                style="flex-grow: 1; cursor: pointer;">
+                    <h3 style="text-align: center;">WebDev Tutorial</h3>
+                </a>
                 <button id="toggleTopicSelectorButton" onclick="toggleTopicSelector()">
                     <img src="resources/expandArrow.png" alt="toggle topic selection panel"
                     style="width: 1.5ch;">
@@ -25,7 +30,7 @@
             <a onclick="activateTopic('topics/adding_content.html', this)">Adding Content
                 <a class="sub_topic" onclick="activateTopic('topics/adding_content.html#TextBasedElements', this)">Text Based Elements</a>
                 <a class="sub_topic" onclick="activateTopic('topics/adding_content.html#Attributes', this)">Element Attributes</a>
-
+                <a class="sub_topic" onclick="activateTopic('topics/adding_content.html#Frames', this)">Frames</a>
             </a>
 
             <a onclick="activateTopic('topics/css_styling.html', this)">Stylizing Elements
@@ -44,10 +49,10 @@
                 <a class="sub_topic" onclick="activateTopic('topics/layout_and_sizing.html#Position', this)">Position</a>
             </a><!--Bring up iframes again-->
 
-            <a onclick="activateTopic('topics/logic_with_js.html', this)">Logic</a>
+            <!--<a onclick="activateTopic('topics/logic_with_js.html', this)">Logic</a>-->
             <!--How far into js do I want to go? It would be good for me to
                 really understand and be abe to explain it...-->
-            <a onclick="activateTopic('topics/design_discussion.html', this)">Thoughts on Competent Design</a>
+            <!--<a onclick="activateTopic('topics/design_discussion.html', this)">Thoughts on Competent Design</a>-->
             <!--High lvl discussion of UI design?
                     Maybe after Logic, or maybe dispersed everywhere, or maybe I'm doing too mnuch already-->
 

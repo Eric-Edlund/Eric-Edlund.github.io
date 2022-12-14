@@ -79,9 +79,13 @@ ol {
     line-height: 2em;
 }
 
+table {
+    border-collapse: collapse;
+}
+
 td {
     border: 2px solid black;
-    margin: 0;
+    padding: 1ch;
 }
 
 /*
